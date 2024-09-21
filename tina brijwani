@@ -1,0 +1,465 @@
+# Function to insert an element at the bottom of the stack
+def insert_at_bottom(stack, item):
+    if not stack:
+        stack.append(item)
+    else:
+        # Pop all the elements
+        top = stack.pop()
+        insert_at_bottom(stack, item)
+        # Push the popped elements back
+        stack.append(top)
+
+# Function to reverse the stack
+def reverse_stack(stack):
+    if stack:
+        # Pop the top element
+        top = stack.pop()
+        # Reverse the remaining stack
+        reverse_stack(stack)
+        # Insert the popped element at the bottom
+        insert_at_bottom(stack, top)
+
+# Driver code
+stack = [1, 2, 3, 4, 5]
+print("Original Stack:", stack)
+reverse_stack(stack)
+print("Reversed Stack:", stack)
+
+2
+def three_sum(nums):
+    # Sort the array to apply two-pointer technique
+    nums.sort()
+    result = []
+    
+    # Iterate through the array
+    for i in range(len(nums) - 2):
+        # Skip duplicates for the first element
+        if i > 0 and nums[i] == nums[i - 1]:
+            continue
+        
+        # Define two pointers
+        left, right = i + 1, len(nums) - 1
+        
+        # Two-pointer technique to find pairs
+        while left < right:
+            total = nums[i] + nums[left] + nums[right]
+            
+            if total == 0:
+                result.append([nums[i], nums[left], nums[right]])
+                
+                # Skip duplicates for the second and third elements
+                while left < right and nums[left] == nums[left + 1]:
+                    left += 1
+                while left < right and nums[right] == nums[right - 1]:
+                    right -= 1
+                
+                # Move both pointers after finding a valid triplet
+                left += 1
+                right -= 1
+            
+            # If the sum is too small, move the left pointer to the right
+            elif total < 0:
+                left += 1
+            
+            # If the sum is too large, move the right pointer to the left
+            else:
+                right -= 1
+    
+    return result
+
+# Driver code
+nums = [-1, 0, 1, 2, -1, -4]
+print("Triplets that sum to zero:", three_sum(nums))
+
+3
+
+def dfs_recursive(graph, vertex, visited):
+    # Mark the current vertex as visited
+    visited.add(vertex)
+    print(vertex, end=" ")
+
+    # Recur for all the vertices adjacent to this vertex
+    for neighbor in graph[vertex]:
+        if neighbor not in visited:
+            dfs_recursive(graph, neighbor, visited)
+
+# Driver code for recursive DFS
+graph = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D', 'E'],
+    'C': ['A', 'F'],
+    'D': ['B'],
+    'E': ['B', 'F'],
+    'F': ['C', 'E']
+}
+
+visited = set()  # Set to keep track of visited nodes
+print("Recursive DFS Traversal:")
+dfs_recursive(graph, 'A', visited)
+
+4
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Website - Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="blog.html">Blog</a></li>
+        </ul>
+    </nav>
+
+    <!-- Welcome Message -->
+    <section class="welcome-section">
+        <h1>Welcome to My Simple Website</h1>
+        <p>This is a simple website with navigation to different pages. Feel free to explore!</p>
+    </section>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Website - About</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="blog.html">Blog</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Content -->
+    <section class="about-section">
+        <h1>About Us</h1>
+        <p>This page provides more information about our website and its purpose. We aim to create simple yet functional websites.</p>
+    </section>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Website - Contact</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="blog.html">Blog</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contact Content -->
+    <section class="contact-section">
+        <h1>Contact Us</h1>
+        <p>If you would like to get in touch, please reach out to us at contact@simplewebsite.com.</p>
+    </section>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Website - Blog</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="blog.html">Blog</a></li>
+        </ul>
+    </nav>
+
+    <!-- Blog Content -->
+    <section class="blog-section">
+        <h1>Our Blog</h1>
+        <p>Stay tuned for upcoming blog posts and news updates!</p>
+    </section>
+
+</body>
+</html>
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Navigation bar styling */
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+
+nav ul li a:hover {
+    background-color: #575757;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Welcome Section Styling */
+.welcome-section, .about-section, .contact-section, .blog-section {
+    padding: 50px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+p {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+5
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Social Media Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>My Social Media Platform</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#messages">Messages</a></li>
+                <li><a href="#settings">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="content-container">
+        <section id="home" class="content-section active"> 
+            <h2>Home Feed</h2>
+            <p>Welcome to the home feed where you'll see the latest posts from your friends.</p>
+        </section>
+
+        <section id="profile" class="content-section"> 
+            <h2>Your Profile</h2>
+            <p>Update your profile information here and check your latest activities.</p>
+        </section>
+
+        <section id="messages" class="content-section">
+            <h2>Messages</h2>
+            <p>Check your direct messages and chat with your friends.</p>
+        </section>
+
+        <section id="settings" class="content-section">
+            <h2>Settings</h2>
+            <p>Manage your account settings, privacy preferences, and more.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Social Media Platform</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1em;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+nav {
+    margin-top: 1em;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.nav-links a:hover {
+    color: #ddd;
+}
+
+/* Main content styling */
+main {
+    padding: 2em;
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+footer {
+    text-align: center;
+    padding: 1em;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive design for mobile */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+    }
+
+    .nav-links a {
+        padding: 10px;
+    }
+}
+
+/* Content section styling for mobile */
+@media screen and (max-width: 768px) {
+    main {
+        padding: 1em;
+    }
+}
+// JavaScript to handle content switching and swipe gestures
+
+// Array of content sections
+const sections = document.querySelectorAll('.content-section');
+
+// Track the current active section index
+let currentSection = 0;
+
+// Function to change section based on index
+function changeSection(index) {
+    sections.forEach((section, i) => {
+        section.classList.remove('active');
+        if (i === index) {
+            section.classList.add('active');
+        }
+    });
+}
+
+// Detect swipe gestures for mobile navigation
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleGesture();
+});
+
+function handleGesture() {
+    // Swipe left to move to the next section
+    if (touchEndX < touchStartX) {
+        if (currentSection < sections.length - 1) {
+            currentSection++;
+            changeSection(currentSection);
+        }
+    }
+
+    // Swipe right to move to the previous section
+    if (touchEndX > touchStartX) {
+        if (currentSection > 0) {
+            currentSection--;
+            changeSection(currentSection);
+        }
+    }
+}
+
+// Add event listeners to navigation links
+const navLinks = document.querySelectorAll('.nav-links a');
+
+navLinks.forEach((link, index) => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentSection = index;
+        changeSection(index);
+    });
+});
